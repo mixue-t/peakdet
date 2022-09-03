@@ -25,7 +25,7 @@ class _PhysioEditor():
         self.data = utils.check_physio(data, copy=True)
         fs = 1 if data.fs is None else data.fs
         self.time = np.arange(0, len(data.data) / fs, 1 / fs)
-
+        self.time = self.time[0:len(data.data)]
         # we need to create these variables in case someone doesn't "quit"
         # the plot appropriately (i.e., clicks X instead of pressing ctrl+q)
         self.deleted, self.rejected = set(), set()
